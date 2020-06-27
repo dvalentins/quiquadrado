@@ -24,7 +24,7 @@ disqusShortname = "yourdiscussshortname"
     #gravatar = "john.doe@example.com"
     footercontent = " "
 
-    dateformat = "2 de Janeiro, 2006" 
+    dateformat = "January 2, 2006" 
 
     hideFooter = false
     hideCredits = false
