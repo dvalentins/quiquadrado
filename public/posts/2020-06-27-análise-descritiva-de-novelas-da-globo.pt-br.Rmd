@@ -27,7 +27,7 @@ library(readxl)
 library(janitor)
 library(lubridate)
 ```
-
+ 
 ### Data cleaning
 ```{r, warning = F}
 novela_raw <- read_excel("Base Novelas.xlsx", 
@@ -45,7 +45,7 @@ novela <- novela_raw %>%
 ```
 
 ### Audiência ao longo do tempo
-```{r, fig.height = 3, fig.width = 5, fig.align = 'center'}
+```{r, fig.height = 3.5, fig.width = 8, fig.align = 'center'}
 novela %>%
   select(novela, audiencia, ano) %>%
   group_by(ano) %>%
