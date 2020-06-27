@@ -21,15 +21,6 @@
     </item>
     
     <item>
-      <title>Fala galerinha do youtube</title>
-      <link>/posts/fala-galerinha-do-youtube.pt-br/</link>
-      <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/fala-galerinha-do-youtube.pt-br/</guid>
-      <description>Funciona?library(tidyverse)library(kableExtra)theme_set(theme_minimal())mpg %&amp;gt;%head(5) %&amp;gt;%kable() manufacturermodeldisplyearcyltransdrvctyhwyflclassaudia41.819994auto(l5)f1829pcompactaudia41.819994manual(m5)f2129pcompactaudia42.</description>
-    </item>
-    
-    <item>
       <title>Hello R Markdown</title>
       <link>/post/2015-07-23-r-rmarkdown/</link>
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
@@ -46,7 +37,7 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/contact/</guid>
-      <description>Me siga em @joaoninguem.</description>
+      <description>Entre em contato comigo pelo Linkedin, ou então pelo meu endereço de e-mail dvalentins@outlook.com.</description>
     </item>
     
     <item>

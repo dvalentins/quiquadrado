@@ -12,11 +12,20 @@
     
     
     <item>
-      <title>R</title>
-      <link>/en/categories/r/</link>
+      <title>descriptive</title>
+      <link>/en/categories/descriptive/</link>
       <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/en/categories/r/</guid>
+      <guid>/en/categories/descriptive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>statistics</title>
+      <link>/en/categories/statistics/</link>
+      <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/en/categories/statistics/</guid>
       <description></description>
     </item>
     

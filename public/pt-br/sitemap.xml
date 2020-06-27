@@ -33,21 +33,6 @@
   </url>
   
   <url>
-    <loc>/posts/fala-galerinha-do-youtube.pt-br/</loc>
-    <lastmod>2020-06-27T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/posts/youtube-people-whatsapp/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="/posts/fala-galerinha-do-youtube.pt-br/"
-                />
-  </url>
-  
-  <url>
     <loc>/posts/</loc>
     <lastmod>2020-06-27T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -80,6 +65,16 @@
   <url>
     <loc>/tags/r/</loc>
     <lastmod>2020-06-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/r/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-br"
+                href="/tags/r/"
+                />
   </url>
   
   <url>
@@ -100,6 +95,16 @@
   <url>
     <loc>/tags/tidyverse/</loc>
     <lastmod>2020-06-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/tidyverse/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-br"
+                href="/tags/tidyverse/"
+                />
   </url>
   
   <url>
@@ -120,16 +125,6 @@
   <url>
     <loc>/categories/r/</loc>
     <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/categories/r/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="/categories/r/"
-                />
   </url>
   
   <url>
@@ -144,6 +139,16 @@
   
   <url>
     <loc>/contact/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/contact/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-br"
+                href="/contact/"
+                />
   </url>
   
   <url>
@@ -174,6 +179,16 @@
   
   <url>
     <loc>/about/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-br"
+                href="/about/"
+                />
   </url>
   
 </urlset>
