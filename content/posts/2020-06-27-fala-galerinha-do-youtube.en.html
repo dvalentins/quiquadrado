@@ -1,0 +1,246 @@
+---
+title: Youtuble people whatsapp
+author: Daniel Valentins
+date: '2020-06-27'
+slug: youtube-people-whatsapp
+categories:
+  - R
+tags: []
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+<div id="does-this-work" class="section level1">
+<h1>Does this work?</h1>
+<pre class="r"><code>library(tidyverse)
+library(kableExtra)
+
+theme_set(theme_minimal())</code></pre>
+<pre class="r"><code>mpg %&gt;%
+  head(5) %&gt;%
+  kable() </code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+manufacturer
+</th>
+<th style="text-align:left;">
+model
+</th>
+<th style="text-align:right;">
+displ
+</th>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:right;">
+cyl
+</th>
+<th style="text-align:left;">
+trans
+</th>
+<th style="text-align:left;">
+drv
+</th>
+<th style="text-align:right;">
+cty
+</th>
+<th style="text-align:right;">
+hwy
+</th>
+<th style="text-align:left;">
+fl
+</th>
+<th style="text-align:left;">
+class
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(av)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>mpg %&gt;%
+  ggplot(aes(displ, cty, color = class)) +
+  geom_point(size = 2) +
+  labs(title = &quot;Primeiro gráfico&quot;, 
+       x = &quot;&quot;, y = &quot;&quot;, color = &quot;Classe:&quot;)</code></pre>
+<p><img src="/posts/2020-06-27-fala-galerinha-do-youtube.en_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>

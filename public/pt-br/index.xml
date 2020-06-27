@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Qui-Quadrado?</title>
+    <link>/pt-br/</link>
+    <description>Recent content on Qui-Quadrado?</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 27 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/pt-br/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fala galerinha do youtube</title>
+      <link>/pt-br/posts/fala-galerinha-do-youtube.pt-br/</link>
+      <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/pt-br/posts/fala-galerinha-do-youtube.pt-br/</guid>
+      <description>Funciona?library(tidyverse)library(kableExtra)theme_set(theme_minimal())mpg %&amp;gt;%head(5) %&amp;gt;%kable() manufacturermodeldisplyearcyltransdrvctyhwyflclassaudia41.819994auto(l5)f1829pcompactaudia41.819994manual(m5)f2129pcompactaudia42.</description>
+    </item>
+    
+    <item>
+      <title>Contato</title>
+      <link>/pt-br/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/pt-br/contact/</guid>
+      <description>Me siga em @joaoninguem.</description>
+    </item>
+    
+    <item>
+      <title>Sobre mim</title>
+      <link>/pt-br/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/pt-br/about/</guid>
+      <description>Estatístico formado pela Universidade Federal de Mato Grosso (UFMT).
+Experiência   Controle Estatístico de Qualidade
+  Pesquisa de mercado e de opinião
+  Análise da mortalidade e incidência de câncer
+  Atualmente trabalhando como Cientista de Dados na Nuvem Tecnologia.</description>
+    </item>
+    
+  </channel>
+</rss>

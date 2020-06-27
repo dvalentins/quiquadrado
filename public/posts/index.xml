@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Qui-Quadrado?</title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on Qui-Quadrado?</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 27 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Youtuble people whatsapp</title>
+      <link>/posts/youtube-people-whatsapp/</link>
+      <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/youtube-people-whatsapp/</guid>
+      <description>Does this work?library(tidyverse)library(kableExtra)theme_set(theme_minimal())mpg %&amp;gt;%head(5) %&amp;gt;%kable() manufacturermodeldisplyearcyltransdrvctyhwyflclassaudia41.819994auto(l5)f1829pcompactaudia41.</description>
+    </item>
+    
+  </channel>
+</rss>

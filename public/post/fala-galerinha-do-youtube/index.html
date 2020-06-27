@@ -1,0 +1,8435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="Daniel Valentins">
+    <meta name="description" content="Funciona?library(tidyverse)library(kableExtra)theme_set(theme_minimal())mpg %&gt;%kable()manufacturermodeldisplyearcyltransdrvctyhwyflclassaudia41.819994auto(l5)f1829pcompactaudia41.819994manual(m5)f2129pcompactaudia42.">
+    <meta name="keywords" content="estatistico, data science, analise">
+
+    
+      <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Fala galerinha do youtube"/>
+<meta name="twitter:description" content="Funciona?library(tidyverse)library(kableExtra)theme_set(theme_minimal())mpg %&gt;%kable()manufacturermodeldisplyearcyltransdrvctyhwyflclassaudia41.819994auto(l5)f1829pcompactaudia41.819994manual(m5)f2129pcompactaudia42."/>
+
+    <meta property="og:title" content="Fala galerinha do youtube" />
+<meta property="og:description" content="Funciona?library(tidyverse)library(kableExtra)theme_set(theme_minimal())mpg %&gt;%kable()manufacturermodeldisplyearcyltransdrvctyhwyflclassaudia41.819994auto(l5)f1829pcompactaudia41.819994manual(m5)f2129pcompactaudia42." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/fala-galerinha-do-youtube/" />
+<meta property="article:published_time" content="2020-06-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-06-27T00:00:00+00:00" />
+
+
+    
+      <base href="/post/fala-galerinha-do-youtube/">
+    
+    <title>
+  Fala galerinha do youtube · Qui-Quadrado?
+</title>
+
+    
+      <link rel="canonical" href="/post/fala-galerinha-do-youtube/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.73.0" />
+  </head>
+
+  
+  
+  <body class="colorscheme-light"
+        onload=" twemoji.parse(document.body); "
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Qui-Quadrado?
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="/projects/">Projects</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="/contact/">Contact me</a>
+          </li>
+        
+      
+      
+        
+        
+        
+          
+        
+          
+            
+              <li class="navigation-item menu-separator">
+                <span>|</span>
+              </li>
+              
+            
+            <li class="navigation-item">
+              <a href="/pt-br/">Português</a>
+            </li>
+          
+        
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Fala galerinha do youtube</h1>
+    </header>
+
+    
+
+
+<div id="funciona" class="section level1">
+<h1>Funciona?</h1>
+<pre class="r"><code>library(tidyverse)
+library(kableExtra)
+
+theme_set(theme_minimal())</code></pre>
+<pre class="r"><code>mpg %&gt;%
+  kable()</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+manufacturer
+</th>
+<th style="text-align:left;">
+model
+</th>
+<th style="text-align:right;">
+displ
+</th>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:right;">
+cyl
+</th>
+<th style="text-align:left;">
+trans
+</th>
+<th style="text-align:left;">
+drv
+</th>
+<th style="text-align:right;">
+cty
+</th>
+<th style="text-align:right;">
+hwy
+</th>
+<th style="text-align:left;">
+fl
+</th>
+<th style="text-align:left;">
+class
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(av)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4
+</td>
+<td style="text-align:right;">
+3.1
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(av)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4 quattro
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4 quattro
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4 quattro
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4 quattro
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(s6)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4 quattro
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4 quattro
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4 quattro
+</td>
+<td style="text-align:right;">
+3.1
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(s6)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a4 quattro
+</td>
+<td style="text-align:right;">
+3.1
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a6 quattro
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a6 quattro
+</td>
+<td style="text-align:right;">
+3.1
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(s6)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+audi
+</td>
+<td style="text-align:left;">
+a6 quattro
+</td>
+<td style="text-align:right;">
+4.2
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(s6)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+c1500 suburban 2wd
+</td>
+<td style="text-align:right;">
+5.3
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+c1500 suburban 2wd
+</td>
+<td style="text-align:right;">
+5.3
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+e
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+c1500 suburban 2wd
+</td>
+<td style="text-align:right;">
+5.3
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+c1500 suburban 2wd
+</td>
+<td style="text-align:right;">
+5.7
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+c1500 suburban 2wd
+</td>
+<td style="text-align:right;">
+6.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+corvette
+</td>
+<td style="text-align:right;">
+5.7
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+2seater
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+corvette
+</td>
+<td style="text-align:right;">
+5.7
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+2seater
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+corvette
+</td>
+<td style="text-align:right;">
+6.2
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+2seater
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+corvette
+</td>
+<td style="text-align:right;">
+6.2
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(s6)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+2seater
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+corvette
+</td>
+<td style="text-align:right;">
+7.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+2seater
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+k1500 tahoe 4wd
+</td>
+<td style="text-align:right;">
+5.3
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+k1500 tahoe 4wd
+</td>
+<td style="text-align:right;">
+5.3
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+e
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+k1500 tahoe 4wd
+</td>
+<td style="text-align:right;">
+5.7
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+k1500 tahoe 4wd
+</td>
+<td style="text-align:right;">
+6.5
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+malibu
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+malibu
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+malibu
+</td>
+<td style="text-align:right;">
+3.1
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+malibu
+</td>
+<td style="text-align:right;">
+3.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chevrolet
+</td>
+<td style="text-align:left;">
+malibu
+</td>
+<td style="text-align:right;">
+3.6
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(s6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+caravan 2wd
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l3)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+minivan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+caravan 2wd
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+minivan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+caravan 2wd
+</td>
+<td style="text-align:right;">
+3.3
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+minivan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+caravan 2wd
+</td>
+<td style="text-align:right;">
+3.3
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+minivan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+caravan 2wd
+</td>
+<td style="text-align:right;">
+3.3
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+minivan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+caravan 2wd
+</td>
+<td style="text-align:right;">
+3.3
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+minivan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+caravan 2wd
+</td>
+<td style="text-align:right;">
+3.3
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+e
+</td>
+<td style="text-align:left;">
+minivan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+caravan 2wd
+</td>
+<td style="text-align:right;">
+3.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+minivan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+caravan 2wd
+</td>
+<td style="text-align:right;">
+3.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+minivan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+caravan 2wd
+</td>
+<td style="text-align:right;">
+3.8
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+minivan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+caravan 2wd
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+minivan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+dakota pickup 4wd
+</td>
+<td style="text-align:right;">
+3.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+dakota pickup 4wd
+</td>
+<td style="text-align:right;">
+3.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+dakota pickup 4wd
+</td>
+<td style="text-align:right;">
+3.9
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+dakota pickup 4wd
+</td>
+<td style="text-align:right;">
+3.9
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+dakota pickup 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+dakota pickup 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+dakota pickup 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+e
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+dakota pickup 4wd
+</td>
+<td style="text-align:right;">
+5.2
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+dakota pickup 4wd
+</td>
+<td style="text-align:right;">
+5.2
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+durango 4wd
+</td>
+<td style="text-align:right;">
+3.9
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+durango 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+durango 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+e
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+durango 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+durango 4wd
+</td>
+<td style="text-align:right;">
+5.2
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+durango 4wd
+</td>
+<td style="text-align:right;">
+5.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+durango 4wd
+</td>
+<td style="text-align:right;">
+5.9
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+ram 1500 pickup 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+ram 1500 pickup 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+e
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+ram 1500 pickup 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+ram 1500 pickup 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+ram 1500 pickup 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+ram 1500 pickup 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+e
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+ram 1500 pickup 4wd
+</td>
+<td style="text-align:right;">
+5.2
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+ram 1500 pickup 4wd
+</td>
+<td style="text-align:right;">
+5.2
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+ram 1500 pickup 4wd
+</td>
+<td style="text-align:right;">
+5.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dodge
+</td>
+<td style="text-align:left;">
+ram 1500 pickup 4wd
+</td>
+<td style="text-align:right;">
+5.9
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+expedition 2wd
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+expedition 2wd
+</td>
+<td style="text-align:right;">
+5.4
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+expedition 2wd
+</td>
+<td style="text-align:right;">
+5.4
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l6)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+explorer 4wd
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+explorer 4wd
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+explorer 4wd
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+explorer 4wd
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+explorer 4wd
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l6)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+explorer 4wd
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+f150 pickup 4wd
+</td>
+<td style="text-align:right;">
+4.2
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+f150 pickup 4wd
+</td>
+<td style="text-align:right;">
+4.2
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+f150 pickup 4wd
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+f150 pickup 4wd
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+f150 pickup 4wd
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+f150 pickup 4wd
+</td>
+<td style="text-align:right;">
+5.4
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+f150 pickup 4wd
+</td>
+<td style="text-align:right;">
+5.4
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+mustang
+</td>
+<td style="text-align:right;">
+3.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+mustang
+</td>
+<td style="text-align:right;">
+3.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+mustang
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+mustang
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+mustang
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+mustang
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+mustang
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+mustang
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ford
+</td>
+<td style="text-align:left;">
+mustang
+</td>
+<td style="text-align:right;">
+5.4
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+honda
+</td>
+<td style="text-align:left;">
+civic
+</td>
+<td style="text-align:right;">
+1.6
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+honda
+</td>
+<td style="text-align:left;">
+civic
+</td>
+<td style="text-align:right;">
+1.6
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+honda
+</td>
+<td style="text-align:left;">
+civic
+</td>
+<td style="text-align:right;">
+1.6
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+honda
+</td>
+<td style="text-align:left;">
+civic
+</td>
+<td style="text-align:right;">
+1.6
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+honda
+</td>
+<td style="text-align:left;">
+civic
+</td>
+<td style="text-align:right;">
+1.6
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+honda
+</td>
+<td style="text-align:left;">
+civic
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+honda
+</td>
+<td style="text-align:left;">
+civic
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+honda
+</td>
+<td style="text-align:left;">
+civic
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+honda
+</td>
+<td style="text-align:left;">
+civic
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hyundai
+</td>
+<td style="text-align:left;">
+sonata
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hyundai
+</td>
+<td style="text-align:left;">
+sonata
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hyundai
+</td>
+<td style="text-align:left;">
+sonata
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hyundai
+</td>
+<td style="text-align:left;">
+sonata
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hyundai
+</td>
+<td style="text-align:left;">
+sonata
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hyundai
+</td>
+<td style="text-align:left;">
+sonata
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hyundai
+</td>
+<td style="text-align:left;">
+sonata
+</td>
+<td style="text-align:right;">
+3.3
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hyundai
+</td>
+<td style="text-align:left;">
+tiburon
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hyundai
+</td>
+<td style="text-align:left;">
+tiburon
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hyundai
+</td>
+<td style="text-align:left;">
+tiburon
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hyundai
+</td>
+<td style="text-align:left;">
+tiburon
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hyundai
+</td>
+<td style="text-align:left;">
+tiburon
+</td>
+<td style="text-align:right;">
+2.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hyundai
+</td>
+<td style="text-align:left;">
+tiburon
+</td>
+<td style="text-align:right;">
+2.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hyundai
+</td>
+<td style="text-align:left;">
+tiburon
+</td>
+<td style="text-align:right;">
+2.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+jeep
+</td>
+<td style="text-align:left;">
+grand cherokee 4wd
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+jeep
+</td>
+<td style="text-align:left;">
+grand cherokee 4wd
+</td>
+<td style="text-align:right;">
+3.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+jeep
+</td>
+<td style="text-align:left;">
+grand cherokee 4wd
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+jeep
+</td>
+<td style="text-align:left;">
+grand cherokee 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+jeep
+</td>
+<td style="text-align:left;">
+grand cherokee 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+e
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+jeep
+</td>
+<td style="text-align:left;">
+grand cherokee 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+jeep
+</td>
+<td style="text-align:left;">
+grand cherokee 4wd
+</td>
+<td style="text-align:right;">
+5.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+jeep
+</td>
+<td style="text-align:left;">
+grand cherokee 4wd
+</td>
+<td style="text-align:right;">
+6.1
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+land rover
+</td>
+<td style="text-align:left;">
+range rover
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+land rover
+</td>
+<td style="text-align:left;">
+range rover
+</td>
+<td style="text-align:right;">
+4.2
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(s6)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+land rover
+</td>
+<td style="text-align:left;">
+range rover
+</td>
+<td style="text-align:right;">
+4.4
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(s6)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+land rover
+</td>
+<td style="text-align:left;">
+range rover
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lincoln
+</td>
+<td style="text-align:left;">
+navigator 2wd
+</td>
+<td style="text-align:right;">
+5.4
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lincoln
+</td>
+<td style="text-align:left;">
+navigator 2wd
+</td>
+<td style="text-align:right;">
+5.4
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lincoln
+</td>
+<td style="text-align:left;">
+navigator 2wd
+</td>
+<td style="text-align:right;">
+5.4
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l6)
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mercury
+</td>
+<td style="text-align:left;">
+mountaineer 4wd
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mercury
+</td>
+<td style="text-align:left;">
+mountaineer 4wd
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mercury
+</td>
+<td style="text-align:left;">
+mountaineer 4wd
+</td>
+<td style="text-align:right;">
+4.6
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l6)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mercury
+</td>
+<td style="text-align:left;">
+mountaineer 4wd
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nissan
+</td>
+<td style="text-align:left;">
+altima
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nissan
+</td>
+<td style="text-align:left;">
+altima
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nissan
+</td>
+<td style="text-align:left;">
+altima
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(av)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nissan
+</td>
+<td style="text-align:left;">
+altima
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nissan
+</td>
+<td style="text-align:left;">
+altima
+</td>
+<td style="text-align:right;">
+3.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nissan
+</td>
+<td style="text-align:left;">
+altima
+</td>
+<td style="text-align:right;">
+3.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(av)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nissan
+</td>
+<td style="text-align:left;">
+maxima
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nissan
+</td>
+<td style="text-align:left;">
+maxima
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nissan
+</td>
+<td style="text-align:left;">
+maxima
+</td>
+<td style="text-align:right;">
+3.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(av)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nissan
+</td>
+<td style="text-align:left;">
+pathfinder 4wd
+</td>
+<td style="text-align:right;">
+3.3
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nissan
+</td>
+<td style="text-align:left;">
+pathfinder 4wd
+</td>
+<td style="text-align:right;">
+3.3
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nissan
+</td>
+<td style="text-align:left;">
+pathfinder 4wd
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nissan
+</td>
+<td style="text-align:left;">
+pathfinder 4wd
+</td>
+<td style="text-align:right;">
+5.6
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(s5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pontiac
+</td>
+<td style="text-align:left;">
+grand prix
+</td>
+<td style="text-align:right;">
+3.1
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pontiac
+</td>
+<td style="text-align:left;">
+grand prix
+</td>
+<td style="text-align:right;">
+3.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pontiac
+</td>
+<td style="text-align:left;">
+grand prix
+</td>
+<td style="text-align:right;">
+3.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pontiac
+</td>
+<td style="text-align:left;">
+grand prix
+</td>
+<td style="text-align:right;">
+3.8
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pontiac
+</td>
+<td style="text-align:left;">
+grand prix
+</td>
+<td style="text-align:right;">
+5.3
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(s4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+subaru
+</td>
+<td style="text-align:left;">
+forester awd
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+subaru
+</td>
+<td style="text-align:left;">
+forester awd
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+subaru
+</td>
+<td style="text-align:left;">
+forester awd
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+subaru
+</td>
+<td style="text-align:left;">
+forester awd
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+subaru
+</td>
+<td style="text-align:left;">
+forester awd
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+subaru
+</td>
+<td style="text-align:left;">
+forester awd
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+subaru
+</td>
+<td style="text-align:left;">
+impreza awd
+</td>
+<td style="text-align:right;">
+2.2
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+subaru
+</td>
+<td style="text-align:left;">
+impreza awd
+</td>
+<td style="text-align:right;">
+2.2
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+subaru
+</td>
+<td style="text-align:left;">
+impreza awd
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+subaru
+</td>
+<td style="text-align:left;">
+impreza awd
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+subaru
+</td>
+<td style="text-align:left;">
+impreza awd
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(s4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+subaru
+</td>
+<td style="text-align:left;">
+impreza awd
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(s4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+subaru
+</td>
+<td style="text-align:left;">
+impreza awd
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+subaru
+</td>
+<td style="text-align:left;">
+impreza awd
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+4runner 4wd
+</td>
+<td style="text-align:right;">
+2.7
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+4runner 4wd
+</td>
+<td style="text-align:right;">
+2.7
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+4runner 4wd
+</td>
+<td style="text-align:right;">
+3.4
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+4runner 4wd
+</td>
+<td style="text-align:right;">
+3.4
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+4runner 4wd
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+4runner 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+camry
+</td>
+<td style="text-align:right;">
+2.2
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+camry
+</td>
+<td style="text-align:right;">
+2.2
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+camry
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+camry
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+camry
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+camry
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+camry
+</td>
+<td style="text-align:right;">
+3.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(s6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+camry solara
+</td>
+<td style="text-align:right;">
+2.2
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+camry solara
+</td>
+<td style="text-align:right;">
+2.2
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+camry solara
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+camry solara
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(s5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+camry solara
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+camry solara
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+camry solara
+</td>
+<td style="text-align:right;">
+3.3
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(s5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+corolla
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l3)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+corolla
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+corolla
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+corolla
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+corolla
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+land cruiser wagon 4wd
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+land cruiser wagon 4wd
+</td>
+<td style="text-align:right;">
+5.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+auto(s6)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+suv
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+toyota tacoma 4wd
+</td>
+<td style="text-align:right;">
+2.7
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+toyota tacoma 4wd
+</td>
+<td style="text-align:right;">
+2.7
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+toyota tacoma 4wd
+</td>
+<td style="text-align:right;">
+2.7
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+toyota tacoma 4wd
+</td>
+<td style="text-align:right;">
+3.4
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+toyota tacoma 4wd
+</td>
+<td style="text-align:right;">
+3.4
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+toyota tacoma 4wd
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+toyota
+</td>
+<td style="text-align:left;">
+toyota tacoma 4wd
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+pickup
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+gti
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+gti
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+gti
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+gti
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(s6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+gti
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+jetta
+</td>
+<td style="text-align:right;">
+1.9
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+jetta
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+jetta
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+jetta
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(s6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+jetta
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+jetta
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+auto(s6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+jetta
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+jetta
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+jetta
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+compact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+new beetle
+</td>
+<td style="text-align:right;">
+1.9
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+new beetle
+</td>
+<td style="text-align:right;">
+1.9
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+new beetle
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+new beetle
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l4)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+new beetle
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+new beetle
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+auto(s6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:left;">
+subcompact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+passat
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+passat
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+passat
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+auto(s6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+passat
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+manual(m6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+passat
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(l5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+passat
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+manual(m5)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volkswagen
+</td>
+<td style="text-align:left;">
+passat
+</td>
+<td style="text-align:right;">
+3.6
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+auto(s6)
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+midsize
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>mpg %&gt;%
+  ggplot(aes(displ, cty, color = class)) +
+  geom_point(size = 2) +
+  labs(title = &quot;Primeiro gráfico&quot;,
+       x = &quot;&quot;, y = &quot;&quot;, color = &quot;Classe:&quot;)</code></pre>
+<p><img src="/post/2020-06-27-fala-galerinha-do-youtube.en_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+
+  </article>
+</section>
+
+  
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Enter a text here.</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2020
+         Daniel Valentins 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+        
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+  </body>
+
+</html>
