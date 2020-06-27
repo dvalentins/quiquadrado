@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tidyverse on Qui-Quadrado?</title>
+    <link>/tags/tidyverse/</link>
+    <description>Recent content in tidyverse on Qui-Quadrado?</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 27 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/tidyverse/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Análise descritiva de novelas da Globo</title>
+      <link>/posts/an%C3%A1lise-descritiva-de-novelas-da-globo.pt-br/</link>
+      <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/an%C3%A1lise-descritiva-de-novelas-da-globo.pt-br/</guid>
+      <description>Pacoteslibrary(tidyverse)library(readxl)library(janitor)library(lubridate)Data cleaningnovela_raw &amp;lt;- read_excel(&amp;quot;Base Novelas.xlsx&amp;quot;, sheet = &amp;quot;Base novelas&amp;quot;, col_types = c(&amp;quot;text&amp;quot;, &amp;quot;date&amp;quot;, &amp;quot;date&amp;quot;, &amp;quot;numeric&amp;quot;, &amp;quot;text&amp;quot;, &amp;quot;numeric&amp;quot;, &amp;quot;text&amp;quot;, &amp;quot;numeric&amp;quot;, &amp;quot;numeric&amp;quot;, &amp;quot;numeric&amp;quot;, &amp;quot;numeric&amp;quot;, &amp;quot;numeric&amp;quot;, &amp;quot;numeric&amp;quot;, &amp;quot;numeric&amp;quot;, &amp;quot;numeric&amp;quot;, &amp;quot;text&amp;quot;, &amp;quot;numeric&amp;quot;, &amp;quot;text&amp;quot;)) %&amp;gt;%clean_names()novela &amp;lt;- novela_raw %&amp;gt;%mutate(inicio = as_date(inicio),final = as_date(final))Audiência ao longo do temponovela %&amp;gt;%select(novela, audiencia, ano) %&amp;gt;%group_by(ano) %&amp;gt;%summarise(media_audiencia = mean(audiencia)) %&amp;gt;%ggplot(aes(ano, media_audiencia)) +geom_line(color = &amp;quot;deeppink3&amp;quot;, size = 2) +theme_minimal() +labs(title = &amp;quot;Média de audiência das novelas por ano&amp;quot;,x = &amp;quot;&amp;quot;, y = &amp;quot;Média de audiência&amp;quot;)O número de capítulos influencia na audiência?</description>
+    </item>
+    
+  </channel>
+</rss>

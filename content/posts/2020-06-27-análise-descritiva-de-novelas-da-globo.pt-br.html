@@ -1,0 +1,148 @@
+---
+title: Análise descritiva de novelas da Globo
+author: Daniel Valentins
+date: '2020-06-27'
+slug: análise-descritiva-de-novelas-da-globo.pt-br
+categories:
+  - descritiva
+  - estatística
+tags:
+  - tidyverse
+  - r
+description: ''
+externalLink: ''
+series: []
+---
+
+
+
+<div id="pacotes" class="section level3">
+<h3>Pacotes</h3>
+<pre class="r"><code>library(tidyverse)
+library(readxl)
+library(janitor)
+library(lubridate)</code></pre>
+</div>
+<div id="data-cleaning" class="section level3">
+<h3>Data cleaning</h3>
+<pre class="r"><code>novela_raw &lt;- read_excel(&quot;Base Novelas.xlsx&quot;, 
+    sheet = &quot;Base novelas&quot;, col_types = c(&quot;text&quot;, 
+        &quot;date&quot;, &quot;date&quot;, &quot;numeric&quot;, &quot;text&quot;, 
+        &quot;numeric&quot;, &quot;text&quot;, &quot;numeric&quot;, &quot;numeric&quot;, 
+        &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, 
+        &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, 
+        &quot;text&quot;, &quot;numeric&quot;, &quot;text&quot;)) %&gt;%
+  clean_names()
+
+novela &lt;- novela_raw %&gt;%
+  mutate(inicio = as_date(inicio),
+         final = as_date(final))</code></pre>
+</div>
+<div id="audiência-ao-longo-do-tempo" class="section level3">
+<h3>Audiência ao longo do tempo</h3>
+<pre class="r"><code>novela %&gt;%
+  select(novela, audiencia, ano) %&gt;%
+  group_by(ano) %&gt;%
+  summarise(media_audiencia = mean(audiencia)) %&gt;%
+  ggplot(aes(ano, media_audiencia)) +
+  geom_line(color = &quot;deeppink3&quot;, size = 2) +
+  theme_minimal() +
+  labs(title = &quot;Média de audiência das novelas por ano&quot;,
+       x = &quot;&quot;, y = &quot;Média de audiência&quot;)</code></pre>
+<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-3-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="o-número-de-capítulos-influencia-na-audiência" class="section level3">
+<h3>O número de capítulos influencia na audiência?</h3>
+<pre class="r"><code>novela %&gt;%
+  ggplot(aes(capitulos, audiencia, color = faixa)) +
+  geom_point(size = 2) +
+  #theme_minimal() +
+  labs(title = &quot;Relação entre número de capítulos, audiência e faixa horária&quot;,
+       color = &quot;Faixa horária&quot;, x = &quot;Nº de capítulos&quot;, y = &quot;Audiência&quot;) +
+  theme(title = element_text(size = 10, face=&#39;bold&#39;))</code></pre>
+<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-4-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="relação-entre-audiência-e-faixa-horária" class="section level3">
+<h3>Relação entre audiência e faixa horária</h3>
+<pre class="r"><code>novela %&gt;%
+  select(novela, audiencia, ano, faixa) %&gt;%
+  group_by(ano, faixa) %&gt;%
+  summarise(media_audiencia = mean(audiencia)) %&gt;%
+  ggplot(aes(ano, media_audiencia, group = faixa)) +
+  geom_line(aes(color = faixa), size = 1) +
+  theme_minimal() +
+  labs(title = &quot;Média de audiência das novelas por faixa horária&quot;,
+       x = &quot;&quot;, y = &quot;Média de audiência&quot;)</code></pre>
+<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-5-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="distribuição-do-número-de-capítulos" class="section level3">
+<h3>Distribuição do número de capítulos</h3>
+<pre class="r"><code>novela %&gt;%
+  ggplot(aes(capitulos)) +
+  geom_histogram(fill = &quot;deeppink4&quot;, bins = 30) +
+  theme_minimal() +
+  labs(title = &quot;Distruição do número de capítulos&quot;,
+       x = &quot;Nº de capítulos&quot;, y = &quot;&quot;)</code></pre>
+<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-6-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="número-de-novelas-por-ano" class="section level3">
+<h3>Número de novelas por ano</h3>
+<pre class="r"><code>novela %&gt;%
+  count(ano, sort = T) %&gt;%
+  mutate(decada = as_factor(round(ano / 10) * 10)) %&gt;%
+  ggplot(aes(n, fill = decada)) +
+  geom_density(alpha = 0.8) +
+  theme_minimal() +
+  labs(title = &quot;Distribuição do número de novelas por ano&quot;, 
+       x = &quot;Número de novelas por ano &quot;, y = &quot;Densidade&quot;, fill = &quot;Década&quot;)</code></pre>
+<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-7-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="quem-mais-escreve-novelas" class="section level3">
+<h3>Quem mais escreve novelas?</h3>
+<pre class="r"><code>novela %&gt;% 
+  count(autor, sort = T) %&gt;%
+  mutate(autor = fct_reorder(autor, n)) %&gt;%
+  head(15) %&gt;%
+  ggplot(aes(autor, n, fill = autor)) +
+  geom_col() +
+  coord_flip() +
+  theme_minimal() +
+  theme(legend.position = &quot;none&quot;) +
+  labs(title = &quot;Autores que mais escreveram novelas&quot;, x = &quot;&quot;,
+       y = &quot;Número de novelas&quot;)</code></pre>
+<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-8-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="quais-as-novelas-com-maior-audiência" class="section level3">
+<h3>Quais as novelas com maior audiência?</h3>
+<pre class="r"><code>novela %&gt;%
+  mutate(decada = as_factor(round(ano / 10) * 10)) %&gt;%
+  arrange(desc(audiencia)) %&gt;%
+  head(15) %&gt;%
+  mutate(novela = fct_reorder(novela, audiencia)) %&gt;%
+  ggplot(aes(novela, audiencia, fill = decada)) +
+  scale_fill_manual(values = c(&quot;turquoise4&quot;, &quot;deeppink3&quot;)) +
+  geom_col() +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = &quot;Maiores audiências de todos os tempos&quot;, x = &quot;&quot;,
+       y = &quot;Audiência&quot;, fill = &quot;Década&quot;)</code></pre>
+<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-9-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<div id="maiores-audiências-depois-de-2000" class="section level3">
+<h3>Maiores audiências depois de 2000</h3>
+<pre class="r"><code>novela %&gt;%
+  filter(ano &gt;= 2000) %&gt;%
+  mutate(decada = as_factor(round(ano / 10) * 10)) %&gt;%
+  arrange(desc(audiencia)) %&gt;%
+  head(15) %&gt;%
+  mutate(novela = fct_reorder(novela, audiencia)) %&gt;%
+  ggplot(aes(novela, audiencia, fill = decada)) +
+  scale_fill_manual(values = c(&quot;turquoise4&quot;, &quot;deeppink3&quot;)) +
+  geom_col() +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = &quot;Maiores audiências do século XXI&quot;,
+       subtitle = &quot;De 2000 a 2019&quot;, x = &quot;&quot;,
+       y = &quot;Audiência&quot;, fill = &quot;Década&quot;)</code></pre>
+<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-10-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>

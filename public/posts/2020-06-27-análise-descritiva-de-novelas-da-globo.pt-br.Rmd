@@ -1,0 +1,154 @@
+---
+title: Análise descritiva de novelas da Globo
+author: Daniel Valentins
+date: '2020-06-27'
+slug: análise-descritiva-de-novelas-da-globo.pt-br
+categories:
+  - descritiva
+  - estatística
+tags:
+  - tidyverse
+  - r
+description: ''
+externalLink: ''
+series: []
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+setwd("C:/Users/Usuario/Desktop/quiquadrado/content/posts")
+```
+
+### Pacotes
+```{r, warning = F, message = F}
+library(tidyverse)
+library(readxl)
+library(janitor)
+library(lubridate)
+```
+
+### Data cleaning
+```{r, warning = F}
+novela_raw <- read_excel("Base Novelas.xlsx", 
+    sheet = "Base novelas", col_types = c("text", 
+        "date", "date", "numeric", "text", 
+        "numeric", "text", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "text", "numeric", "text")) %>%
+  clean_names()
+
+novela <- novela_raw %>%
+  mutate(inicio = as_date(inicio),
+         final = as_date(final))
+```
+
+### Audiência ao longo do tempo
+```{r, fig.height = 3, fig.width = 5, fig.align = 'center'}
+novela %>%
+  select(novela, audiencia, ano) %>%
+  group_by(ano) %>%
+  summarise(media_audiencia = mean(audiencia)) %>%
+  ggplot(aes(ano, media_audiencia)) +
+  geom_line(color = "deeppink3", size = 2) +
+  theme_minimal() +
+  labs(title = "Média de audiência das novelas por ano",
+       x = "", y = "Média de audiência")
+```
+
+### O número de capítulos influencia na audiência?
+```{r, fig.height = 3, fig.width = 5, fig.align = 'center'}
+novela %>%
+  ggplot(aes(capitulos, audiencia, color = faixa)) +
+  geom_point(size = 2) +
+  #theme_minimal() +
+  labs(title = "Relação entre número de capítulos, audiência e faixa horária",
+       color = "Faixa horária", x = "Nº de capítulos", y = "Audiência") +
+  theme(title = element_text(size = 10, face='bold'))
+```
+
+### Relação entre audiência e faixa horária
+```{r, fig.height = 3, fig.width = 5, fig.align = 'center'}
+novela %>%
+  select(novela, audiencia, ano, faixa) %>%
+  group_by(ano, faixa) %>%
+  summarise(media_audiencia = mean(audiencia)) %>%
+  ggplot(aes(ano, media_audiencia, group = faixa)) +
+  geom_line(aes(color = faixa), size = 1) +
+  theme_minimal() +
+  labs(title = "Média de audiência das novelas por faixa horária",
+       x = "", y = "Média de audiência")
+```
+
+### Distribuição do número de capítulos
+```{r, fig.height = 3, fig.width = 5, fig.align = 'center'}
+novela %>%
+  ggplot(aes(capitulos)) +
+  geom_histogram(fill = "deeppink4", bins = 30) +
+  theme_minimal() +
+  labs(title = "Distruição do número de capítulos",
+       x = "Nº de capítulos", y = "")
+```
+
+### Número de novelas por ano
+```{r, fig.height = 3, fig.width = 5, fig.align = 'center', warning = F}
+novela %>%
+  count(ano, sort = T) %>%
+  mutate(decada = as_factor(round(ano / 10) * 10)) %>%
+  ggplot(aes(n, fill = decada)) +
+  geom_density(alpha = 0.8) +
+  theme_minimal() +
+  labs(title = "Distribuição do número de novelas por ano", 
+       x = "Número de novelas por ano ", y = "Densidade", fill = "Década")
+```
+
+### Quem mais escreve novelas?
+```{r, fig.height = 3, fig.width = 5, fig.align = 'center'}
+novela %>% 
+  count(autor, sort = T) %>%
+  mutate(autor = fct_reorder(autor, n)) %>%
+  head(15) %>%
+  ggplot(aes(autor, n, fill = autor)) +
+  geom_col() +
+  coord_flip() +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  labs(title = "Autores que mais escreveram novelas", x = "",
+       y = "Número de novelas")
+```
+
+### Quais as novelas com maior audiência?
+```{r, fig.height = 3, fig.width = 6, fig.align = 'center'}
+novela %>%
+  mutate(decada = as_factor(round(ano / 10) * 10)) %>%
+  arrange(desc(audiencia)) %>%
+  head(15) %>%
+  mutate(novela = fct_reorder(novela, audiencia)) %>%
+  ggplot(aes(novela, audiencia, fill = decada)) +
+  scale_fill_manual(values = c("turquoise4", "deeppink3")) +
+  geom_col() +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Maiores audiências de todos os tempos", x = "",
+       y = "Audiência", fill = "Década")
+```
+
+### Maiores audiências depois de 2000
+```{r, fig.height = 3, fig.width = 6, fig.align = 'center'}
+novela %>%
+  filter(ano >= 2000) %>%
+  mutate(decada = as_factor(round(ano / 10) * 10)) %>%
+  arrange(desc(audiencia)) %>%
+  head(15) %>%
+  mutate(novela = fct_reorder(novela, audiencia)) %>%
+  ggplot(aes(novela, audiencia, fill = decada)) +
+  scale_fill_manual(values = c("turquoise4", "deeppink3")) +
+  geom_col() +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Maiores audiências do século XXI",
+       subtitle = "De 2000 a 2019", x = "",
+       y = "Audiência", fill = "Década")
+```
+

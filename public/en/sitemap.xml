@@ -3,162 +3,106 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/categories/</loc>
+    <loc>/en/categories/</loc>
     <lastmod>2020-06-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="/pt-br/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
                 href="/categories/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/categories/"
+                />
   </url>
   
   <url>
-    <loc>/posts/</loc>
+    <loc>/en/posts/</loc>
     <lastmod>2020-06-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="/pt-br/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
                 href="/posts/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/posts/"
+                />
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>/en/</loc>
     <lastmod>2020-06-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="/pt-br/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
                 href="/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/"
+                />
   </url>
   
   <url>
-    <loc>/categories/r/</loc>
+    <loc>/en/categories/r/</loc>
     <lastmod>2020-06-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-br"
+                href="/categories/r/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/categories/r/"
+                />
   </url>
   
   <url>
-    <loc>/posts/youtube-people-whatsapp/</loc>
+    <loc>/en/posts/youtube-people-whatsapp/</loc>
     <lastmod>2020-06-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="/pt-br/posts/fala-galerinha-do-youtube.pt-br/"
+                href="/posts/fala-galerinha-do-youtube.pt-br/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/posts/youtube-people-whatsapp/"
+                href="/en/posts/youtube-people-whatsapp/"
                 />
   </url>
   
   <url>
-    <loc>/post/2015-07-23-r-rmarkdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/plot/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/r-markdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/regression/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <loc>/en/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="/pt-br/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/tags/"
-                />
-  </url>
-  
-  <url>
-    <loc>/about/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="/pt-br/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/about/"
-                />
-  </url>
-  
-  <url>
-    <loc>/contact/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="/pt-br/contact/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/contact/"
-                />
-  </url>
-  
-  <url>
-    <loc>/snippets/first/</loc>
-  </url>
-  
-  <url>
-    <loc>/snippets/second/</loc>
-  </url>
-  
-  <url>
-    <loc>/series/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="/pt-br/series/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
                 href="/series/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/series/"
+                />
   </url>
   
   <url>
-    <loc>/snippets/</loc>
+    <loc>/en/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-br"
+                href="/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/"
+                />
   </url>
   
 </urlset>
