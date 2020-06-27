@@ -63,51 +63,6 @@
   </url>
   
   <url>
-    <loc>/tags/r/</loc>
-    <lastmod>2020-06-27T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/r/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="/tags/r/"
-                />
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-06-27T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="/tags/"
-                />
-  </url>
-  
-  <url>
-    <loc>/tags/tidyverse/</loc>
-    <lastmod>2020-06-27T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/tidyverse/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="/tags/tidyverse/"
-                />
-  </url>
-  
-  <url>
     <loc>/post/2015-07-23-r-rmarkdown/</loc>
     <lastmod>2015-07-23T21:13:14-05:00</lastmod>
   </url>
@@ -135,6 +90,21 @@
   <url>
     <loc>/tags/regression/</loc>
     <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt-br"
+                href="/tags/"
+                />
   </url>
   
   <url>

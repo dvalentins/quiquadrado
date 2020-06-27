@@ -60,16 +60,6 @@
   <url>
     <loc>/en/tags/r/</loc>
     <lastmod>2020-06-27T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="/tags/r/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/r/"
-                />
   </url>
   
   <url>
@@ -95,16 +85,6 @@
   <url>
     <loc>/en/tags/tidyverse/</loc>
     <lastmod>2020-06-27T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt-br"
-                href="/tags/tidyverse/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/tidyverse/"
-                />
   </url>
   
   <url>

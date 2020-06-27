@@ -2,17 +2,22 @@
 title: Análise descritiva de novelas da Globo
 author: Daniel Valentins
 date: '2020-06-27'
+output: 
+  blogdown::html_page:
+    highlight: kate
 slug: análise-descritiva-de-novelas-da-globo.pt-br
 categories:
   - descritiva
   - estatística
-tags:
-  - tidyverse
-  - r
-description: ''
-externalLink: ''
 series: []
 ---
+
+<style>
+  pre.r { 
+    color:#000000;
+    background-color:#d9d9f2;
+  }
+</style>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -58,7 +63,7 @@ novela %>%
 ```
 
 ### O número de capítulos influencia na audiência?
-```{r, fig.height = 3, fig.width = 5, fig.align = 'center'}
+```{r, fig.height = 4.5, fig.width = 8, fig.align = 'center'}
 novela %>%
   ggplot(aes(capitulos, audiencia, color = faixa)) +
   geom_point(size = 2) +
@@ -69,7 +74,7 @@ novela %>%
 ```
 
 ### Relação entre audiência e faixa horária
-```{r, fig.height = 3, fig.width = 5, fig.align = 'center'}
+```{r, fig.height = 4, fig.width = 8, fig.align = 'center'}
 novela %>%
   select(novela, audiencia, ano, faixa) %>%
   group_by(ano, faixa) %>%
@@ -82,7 +87,7 @@ novela %>%
 ```
 
 ### Distribuição do número de capítulos
-```{r, fig.height = 3, fig.width = 5, fig.align = 'center'}
+```{r, fig.height = 4, fig.width = 8, fig.align = 'center'}
 novela %>%
   ggplot(aes(capitulos)) +
   geom_histogram(fill = "deeppink4", bins = 30) +
@@ -92,7 +97,7 @@ novela %>%
 ```
 
 ### Número de novelas por ano
-```{r, fig.height = 3, fig.width = 5, fig.align = 'center', warning = F}
+```{r, fig.height = 4.5, fig.width = 8, fig.align = 'center', warning = F}
 novela %>%
   count(ano, sort = T) %>%
   mutate(decada = as_factor(round(ano / 10) * 10)) %>%
@@ -104,7 +109,7 @@ novela %>%
 ```
 
 ### Quem mais escreve novelas?
-```{r, fig.height = 3, fig.width = 5, fig.align = 'center'}
+```{r, fig.height = 4, fig.width = 8, fig.align = 'center'}
 novela %>% 
   count(autor, sort = T) %>%
   mutate(autor = fct_reorder(autor, n)) %>%
@@ -119,7 +124,7 @@ novela %>%
 ```
 
 ### Quais as novelas com maior audiência?
-```{r, fig.height = 3, fig.width = 6, fig.align = 'center'}
+```{r, fig.height = 4, fig.width = 8, fig.align = 'center'}
 novela %>%
   mutate(decada = as_factor(round(ano / 10) * 10)) %>%
   arrange(desc(audiencia)) %>%
@@ -135,7 +140,7 @@ novela %>%
 ```
 
 ### Maiores audiências depois de 2000
-```{r, fig.height = 3, fig.width = 6, fig.align = 'center'}
+```{r, fig.height = 4, fig.width = 8, fig.align = 'center'}
 novela %>%
   filter(ano >= 2000) %>%
   mutate(decada = as_factor(round(ano / 10) * 10)) %>%

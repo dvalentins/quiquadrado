@@ -3,7 +3,7 @@ title = "Qui-Quadrado?"
 
 theme = "hugo-coder"
 
-languagecode = "en"
+languagecode = "pt-br"
 defaultcontentlanguage = "pt-br"
 
 paginate = 20
@@ -17,14 +17,14 @@ disqusShortname = "yourdiscussshortname"
 
 [params]
     author = "Daniel Valentins"
-    description = "**DATA SCIENCE**, café e samba."
+    description = " "
     keywords = "estatistico, data science, analise"
     info = "Data Scientist"
     avatarurl = "images/avatar.jpg"
     #gravatar = "john.doe@example.com"
     footercontent = " "
 
-    dateformat = "January 2, 2006" 
+    dateformat = "2 de Janeiro, 2006" 
 
     hideFooter = false
     hideCredits = false

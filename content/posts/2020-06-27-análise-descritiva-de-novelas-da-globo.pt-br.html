@@ -2,147 +2,217 @@
 title: Análise descritiva de novelas da Globo
 author: Daniel Valentins
 date: '2020-06-27'
+output: 
+  blogdown::html_page:
+    highlight: kate
 slug: análise-descritiva-de-novelas-da-globo.pt-br
 categories:
   - descritiva
   - estatística
-tags:
-  - tidyverse
-  - r
-description: ''
-externalLink: ''
 series: []
 ---
 
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
+</style>
 
 
+<style>
+  pre.r { 
+    color:#000000;
+    background-color:#d9d9f2;
+  }
+</style>
 <div id="pacotes" class="section level3">
 <h3>Pacotes</h3>
-<pre class="r"><code>library(tidyverse)
-library(readxl)
-library(janitor)
-library(lubridate)</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(readxl)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">library</span>(janitor)</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">library</span>(lubridate)</a></code></pre></div>
 </div>
 <div id="data-cleaning" class="section level3">
 <h3>Data cleaning</h3>
-<pre class="r"><code>novela_raw &lt;- read_excel(&quot;Base Novelas.xlsx&quot;, 
-    sheet = &quot;Base novelas&quot;, col_types = c(&quot;text&quot;, 
-        &quot;date&quot;, &quot;date&quot;, &quot;numeric&quot;, &quot;text&quot;, 
-        &quot;numeric&quot;, &quot;text&quot;, &quot;numeric&quot;, &quot;numeric&quot;, 
-        &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, 
-        &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, 
-        &quot;text&quot;, &quot;numeric&quot;, &quot;text&quot;)) %&gt;%
-  clean_names()
-
-novela &lt;- novela_raw %&gt;%
-  mutate(inicio = as_date(inicio),
-         final = as_date(final))</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">novela_raw &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;Base Novelas.xlsx&quot;</span>, </a>
+<a class="sourceLine" id="cb2-2" title="2">    <span class="dt">sheet =</span> <span class="st">&quot;Base novelas&quot;</span>, <span class="dt">col_types =</span> <span class="kw">c</span>(<span class="st">&quot;text&quot;</span>, </a>
+<a class="sourceLine" id="cb2-3" title="3">        <span class="st">&quot;date&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;text&quot;</span>, </a>
+<a class="sourceLine" id="cb2-4" title="4">        <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;text&quot;</span>, <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;numeric&quot;</span>, </a>
+<a class="sourceLine" id="cb2-5" title="5">        <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;numeric&quot;</span>, </a>
+<a class="sourceLine" id="cb2-6" title="6">        <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;numeric&quot;</span>, </a>
+<a class="sourceLine" id="cb2-7" title="7">        <span class="st">&quot;text&quot;</span>, <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;text&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="st">  </span><span class="kw">clean_names</span>()</a>
+<a class="sourceLine" id="cb2-9" title="9"></a>
+<a class="sourceLine" id="cb2-10" title="10">novela &lt;-<span class="st"> </span>novela_raw <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">inicio =</span> <span class="kw">as_date</span>(inicio),</a>
+<a class="sourceLine" id="cb2-12" title="12">         <span class="dt">final =</span> <span class="kw">as_date</span>(final))</a></code></pre></div>
 </div>
 <div id="audiência-ao-longo-do-tempo" class="section level3">
 <h3>Audiência ao longo do tempo</h3>
-<pre class="r"><code>novela %&gt;%
-  select(novela, audiencia, ano) %&gt;%
-  group_by(ano) %&gt;%
-  summarise(media_audiencia = mean(audiencia)) %&gt;%
-  ggplot(aes(ano, media_audiencia)) +
-  geom_line(color = &quot;deeppink3&quot;, size = 2) +
-  theme_minimal() +
-  labs(title = &quot;Média de audiência das novelas por ano&quot;,
-       x = &quot;&quot;, y = &quot;Média de audiência&quot;)</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">novela <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="st">  </span><span class="kw">select</span>(novela, audiencia, ano) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="st">  </span><span class="kw">group_by</span>(ano) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">media_audiencia =</span> <span class="kw">mean</span>(audiencia)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ano, media_audiencia)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">color =</span> <span class="st">&quot;deeppink3&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Média de audiência das novelas por ano&quot;</span>,</a>
+<a class="sourceLine" id="cb3-9" title="9">       <span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Média de audiência&quot;)</span></a></code></pre></div>
 <p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-3-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 <div id="o-número-de-capítulos-influencia-na-audiência" class="section level3">
 <h3>O número de capítulos influencia na audiência?</h3>
-<pre class="r"><code>novela %&gt;%
-  ggplot(aes(capitulos, audiencia, color = faixa)) +
-  geom_point(size = 2) +
-  #theme_minimal() +
-  labs(title = &quot;Relação entre número de capítulos, audiência e faixa horária&quot;,
-       color = &quot;Faixa horária&quot;, x = &quot;Nº de capítulos&quot;, y = &quot;Audiência&quot;) +
-  theme(title = element_text(size = 10, face=&#39;bold&#39;))</code></pre>
-<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-4-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">novela <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(capitulos, audiencia, <span class="dt">color =</span> faixa)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="st">  </span><span class="co">#theme_minimal() +</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Relação entre número de capítulos, audiência e faixa horária&quot;</span>,</a>
+<a class="sourceLine" id="cb4-6" title="6">       <span class="dt">color =</span> <span class="st">&quot;Faixa horária&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Nº de capítulos&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Audiência&quot;) +</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="st">  theme(title = element_text(size = 10, face=&#39;bold&#39;))</span></a></code></pre></div>
+<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-4-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 <div id="relação-entre-audiência-e-faixa-horária" class="section level3">
 <h3>Relação entre audiência e faixa horária</h3>
-<pre class="r"><code>novela %&gt;%
-  select(novela, audiencia, ano, faixa) %&gt;%
-  group_by(ano, faixa) %&gt;%
-  summarise(media_audiencia = mean(audiencia)) %&gt;%
-  ggplot(aes(ano, media_audiencia, group = faixa)) +
-  geom_line(aes(color = faixa), size = 1) +
-  theme_minimal() +
-  labs(title = &quot;Média de audiência das novelas por faixa horária&quot;,
-       x = &quot;&quot;, y = &quot;Média de audiência&quot;)</code></pre>
-<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-5-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">novela <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="st">  </span><span class="kw">select</span>(novela, audiencia, ano, faixa) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="st">  </span><span class="kw">group_by</span>(ano, faixa) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">media_audiencia =</span> <span class="kw">mean</span>(audiencia)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ano, media_audiencia, <span class="dt">group =</span> faixa)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">color =</span> faixa), <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Média de audiência das novelas por faixa horária&quot;</span>,</a>
+<a class="sourceLine" id="cb5-9" title="9">       <span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Média de audiência&quot;)</span></a></code></pre></div>
+<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-5-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 <div id="distribuição-do-número-de-capítulos" class="section level3">
 <h3>Distribuição do número de capítulos</h3>
-<pre class="r"><code>novela %&gt;%
-  ggplot(aes(capitulos)) +
-  geom_histogram(fill = &quot;deeppink4&quot;, bins = 30) +
-  theme_minimal() +
-  labs(title = &quot;Distruição do número de capítulos&quot;,
-       x = &quot;Nº de capítulos&quot;, y = &quot;&quot;)</code></pre>
-<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-6-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">novela <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(capitulos)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;deeppink4&quot;</span>, <span class="dt">bins =</span> <span class="dv">30</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Distruição do número de capítulos&quot;</span>,</a>
+<a class="sourceLine" id="cb6-6" title="6">       <span class="dt">x =</span> <span class="st">&quot;Nº de capítulos&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>)</a></code></pre></div>
+<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-6-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 <div id="número-de-novelas-por-ano" class="section level3">
 <h3>Número de novelas por ano</h3>
-<pre class="r"><code>novela %&gt;%
-  count(ano, sort = T) %&gt;%
-  mutate(decada = as_factor(round(ano / 10) * 10)) %&gt;%
-  ggplot(aes(n, fill = decada)) +
-  geom_density(alpha = 0.8) +
-  theme_minimal() +
-  labs(title = &quot;Distribuição do número de novelas por ano&quot;, 
-       x = &quot;Número de novelas por ano &quot;, y = &quot;Densidade&quot;, fill = &quot;Década&quot;)</code></pre>
-<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-7-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">novela <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="st">  </span><span class="kw">count</span>(ano, <span class="dt">sort =</span> T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">decada =</span> <span class="kw">as_factor</span>(<span class="kw">round</span>(ano <span class="op">/</span><span class="st"> </span><span class="dv">10</span>) <span class="op">*</span><span class="st"> </span><span class="dv">10</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(n, <span class="dt">fill =</span> decada)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">0.8</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Distribuição do número de novelas por ano&quot;</span>, </a>
+<a class="sourceLine" id="cb7-8" title="8">       <span class="dt">x =</span> <span class="st">&quot;Número de novelas por ano &quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Densidade&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;Década&quot;</span>)</a></code></pre></div>
+<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-7-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 <div id="quem-mais-escreve-novelas" class="section level3">
 <h3>Quem mais escreve novelas?</h3>
-<pre class="r"><code>novela %&gt;% 
-  count(autor, sort = T) %&gt;%
-  mutate(autor = fct_reorder(autor, n)) %&gt;%
-  head(15) %&gt;%
-  ggplot(aes(autor, n, fill = autor)) +
-  geom_col() +
-  coord_flip() +
-  theme_minimal() +
-  theme(legend.position = &quot;none&quot;) +
-  labs(title = &quot;Autores que mais escreveram novelas&quot;, x = &quot;&quot;,
-       y = &quot;Número de novelas&quot;)</code></pre>
-<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-8-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">novela <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="st">  </span><span class="kw">count</span>(autor, <span class="dt">sort =</span> T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">autor =</span> <span class="kw">fct_reorder</span>(autor, n)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="st">  </span><span class="kw">head</span>(<span class="dv">15</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(autor, n, <span class="dt">fill =</span> autor)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-6" title="6"><span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-7" title="7"><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-10" title="10"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Autores que mais escreveram novelas&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb8-11" title="11">       <span class="dt">y =</span> <span class="st">&quot;Número de novelas&quot;</span>)</a></code></pre></div>
+<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-8-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 <div id="quais-as-novelas-com-maior-audiência" class="section level3">
 <h3>Quais as novelas com maior audiência?</h3>
-<pre class="r"><code>novela %&gt;%
-  mutate(decada = as_factor(round(ano / 10) * 10)) %&gt;%
-  arrange(desc(audiencia)) %&gt;%
-  head(15) %&gt;%
-  mutate(novela = fct_reorder(novela, audiencia)) %&gt;%
-  ggplot(aes(novela, audiencia, fill = decada)) +
-  scale_fill_manual(values = c(&quot;turquoise4&quot;, &quot;deeppink3&quot;)) +
-  geom_col() +
-  coord_flip() +
-  theme_minimal() +
-  labs(title = &quot;Maiores audiências de todos os tempos&quot;, x = &quot;&quot;,
-       y = &quot;Audiência&quot;, fill = &quot;Década&quot;)</code></pre>
-<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-9-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">novela <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">decada =</span> <span class="kw">as_factor</span>(<span class="kw">round</span>(ano <span class="op">/</span><span class="st"> </span><span class="dv">10</span>) <span class="op">*</span><span class="st"> </span><span class="dv">10</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(audiencia)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="st">  </span><span class="kw">head</span>(<span class="dv">15</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">novela =</span> <span class="kw">fct_reorder</span>(novela, audiencia)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(novela, audiencia, <span class="dt">fill =</span> decada)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;turquoise4&quot;</span>, <span class="st">&quot;deeppink3&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-10" title="10"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Maiores audiências de todos os tempos&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb9-12" title="12">       <span class="dt">y =</span> <span class="st">&quot;Audiência&quot;, fill = &quot;</span>Década<span class="st">&quot;)</span></a></code></pre></div>
+<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-9-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 <div id="maiores-audiências-depois-de-2000" class="section level3">
 <h3>Maiores audiências depois de 2000</h3>
-<pre class="r"><code>novela %&gt;%
-  filter(ano &gt;= 2000) %&gt;%
-  mutate(decada = as_factor(round(ano / 10) * 10)) %&gt;%
-  arrange(desc(audiencia)) %&gt;%
-  head(15) %&gt;%
-  mutate(novela = fct_reorder(novela, audiencia)) %&gt;%
-  ggplot(aes(novela, audiencia, fill = decada)) +
-  scale_fill_manual(values = c(&quot;turquoise4&quot;, &quot;deeppink3&quot;)) +
-  geom_col() +
-  coord_flip() +
-  theme_minimal() +
-  labs(title = &quot;Maiores audiências do século XXI&quot;,
-       subtitle = &quot;De 2000 a 2019&quot;, x = &quot;&quot;,
-       y = &quot;Audiência&quot;, fill = &quot;Década&quot;)</code></pre>
-<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-10-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">novela <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="st">  </span><span class="kw">filter</span>(ano <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2000</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">decada =</span> <span class="kw">as_factor</span>(<span class="kw">round</span>(ano <span class="op">/</span><span class="st"> </span><span class="dv">10</span>) <span class="op">*</span><span class="st"> </span><span class="dv">10</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(audiencia)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="st">  </span><span class="kw">head</span>(<span class="dv">15</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-6" title="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">novela =</span> <span class="kw">fct_reorder</span>(novela, audiencia)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(novela, audiencia, <span class="dt">fill =</span> decada)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-8" title="8"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;turquoise4&quot;</span>, <span class="st">&quot;deeppink3&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-9" title="9"><span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-10" title="10"><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-11" title="11"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-12" title="12"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Maiores audiências do século XXI&quot;</span>,</a>
+<a class="sourceLine" id="cb10-13" title="13">       <span class="dt">subtitle =</span> <span class="st">&quot;De 2000 a 2019&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb10-14" title="14">       <span class="dt">y =</span> <span class="st">&quot;Audiência&quot;, fill = &quot;</span>Década<span class="st">&quot;)</span></a></code></pre></div>
+<p><img src="/posts/2020-06-27-análise-descritiva-de-novelas-da-globo.pt-br_files/figure-html/unnamed-chunk-10-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
