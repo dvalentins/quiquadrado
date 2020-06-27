@@ -3,4 +3,4 @@ slug: contact
 title: Contato
 ---
 
-Me siga em @joaoninguem.
+Entre em contato comigo pelo [Linkedin](https://www.linkedin.com/in/dvalentins/), ou então por endereço de e-mail dvalentins@outlook.com.
