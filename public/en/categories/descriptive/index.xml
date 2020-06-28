@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>descriptive on Qui-Quadrado?</title>
-    <link>/en/categories/descriptive/</link>
+    <link>https://quiquadrado.netlify.app/en/categories/descriptive/</link>
     <description>Recent content in descriptive on Qui-Quadrado?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <lastBuildDate>Sat, 27 Jun 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/en/categories/descriptive/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiquadrado.netlify.app/en/categories/descriptive/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Descriptive analysis of Globo soap operas</title>
-      <link>/en/posts/descriptive-analysis-of-globo-soap-operas/</link>
+      <link>https://quiquadrado.netlify.app/en/posts/descriptive-analysis-of-globo-soap-operas/</link>
       <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/en/posts/descriptive-analysis-of-globo-soap-operas/</guid>
+      <guid>https://quiquadrado.netlify.app/en/posts/descriptive-analysis-of-globo-soap-operas/</guid>
       <description>a.sourceLine { display: inline-block; line-height: 1.25; }a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }a.sourceLine:empty { height: 1.2em; }.sourceCode { overflow: visible; }code.sourceCode { white-space: pre; position: relative; }div.sourceCode { margin: 1em 0; }pre.sourceCode { margin: 0; }@media screen {div.sourceCode { overflow: auto; }}@media print {code.sourceCode { white-space: pre-wrap; }a.sourceLine { text-indent: -1em; padding-left: 1em; }}pre.</description>
     </item>
     

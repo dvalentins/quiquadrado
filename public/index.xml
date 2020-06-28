@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Qui-Quadrado?</title>
-    <link>/</link>
+    <link>https://quiquadrado.netlify.app/</link>
     <description>Recent content on Qui-Quadrado?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <lastBuildDate>Sat, 27 Jun 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiquadrado.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Análise descritiva de novelas da Globo</title>
-      <link>/posts/an%C3%A1lise-descritiva-de-novelas-da-globo.pt-br/</link>
+      <link>https://quiquadrado.netlify.app/posts/an%C3%A1lise-descritiva-de-novelas-da-globo.pt-br/</link>
       <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/posts/an%C3%A1lise-descritiva-de-novelas-da-globo.pt-br/</guid>
+      <guid>https://quiquadrado.netlify.app/posts/an%C3%A1lise-descritiva-de-novelas-da-globo.pt-br/</guid>
       <description>a.sourceLine { display: inline-block; line-height: 1.25; }a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }a.sourceLine:empty { height: 1.2em; }.sourceCode { overflow: visible; }code.sourceCode { white-space: pre; position: relative; }div.sourceCode { margin: 1em 0; }pre.sourceCode { margin: 0; }@media screen {div.sourceCode { overflow: auto; }}@media print {code.sourceCode { white-space: pre-wrap; }a.sourceLine { text-indent: -1em; padding-left: 1em; }}pre.</description>
     </item>
     
     <item>
       <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
+      <link>https://quiquadrado.netlify.app/post/2015-07-23-r-rmarkdown/</link>
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
       
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
+      <guid>https://quiquadrado.netlify.app/post/2015-07-23-r-rmarkdown/</guid>
       <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
 You can embed an R code chunk like this:
 summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
@@ -33,39 +33,39 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     
     <item>
       <title>Contato</title>
-      <link>/contact/</link>
+      <link>https://quiquadrado.netlify.app/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/contact/</guid>
+      <guid>https://quiquadrado.netlify.app/contact/</guid>
       <description>Entre em contato comigo pelo Linkedin, ou então pelo meu endereço de e-mail dvalentins@outlook.com.</description>
     </item>
     
     <item>
       <title>First snippet</title>
-      <link>/snippets/first/</link>
+      <link>https://quiquadrado.netlify.app/snippets/first/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/snippets/first/</guid>
+      <guid>https://quiquadrado.netlify.app/snippets/first/</guid>
       <description>This content is in snippets/first/index.md
 pwd </description>
     </item>
     
     <item>
       <title>Second snippet</title>
-      <link>/snippets/second/</link>
+      <link>https://quiquadrado.netlify.app/snippets/second/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/snippets/second/</guid>
+      <guid>https://quiquadrado.netlify.app/snippets/second/</guid>
       <description>This content is in snippets/second/index.md
 ls -la </description>
     </item>
     
     <item>
       <title>Sobre mim</title>
-      <link>/about/</link>
+      <link>https://quiquadrado.netlify.app/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/about/</guid>
+      <guid>https://quiquadrado.netlify.app/about/</guid>
       <description>Estatístico formado pela Universidade Federal de Mato Grosso (UFMT).
 Experiência   Controle Estatístico de Qualidade
   Pesquisa de mercado e de opinião

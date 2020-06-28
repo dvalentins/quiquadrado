@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Qui-Quadrado?</title>
-    <link>/categories/</link>
+    <link>https://quiquadrado.netlify.app/categories/</link>
     <description>Recent content in Categories on Qui-Quadrado?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <lastBuildDate>Sat, 27 Jun 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quiquadrado.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>descritiva</title>
-      <link>/categories/descritiva/</link>
+      <link>https://quiquadrado.netlify.app/categories/descritiva/</link>
       <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/descritiva/</guid>
+      <guid>https://quiquadrado.netlify.app/categories/descritiva/</guid>
       <description></description>
     </item>
     
     <item>
       <title>estatística</title>
-      <link>/categories/estat%C3%ADstica/</link>
+      <link>https://quiquadrado.netlify.app/categories/estat%C3%ADstica/</link>
       <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/estat%C3%ADstica/</guid>
+      <guid>https://quiquadrado.netlify.app/categories/estat%C3%ADstica/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>/categories/r/</link>
+      <link>https://quiquadrado.netlify.app/categories/r/</link>
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
       
-      <guid>/categories/r/</guid>
+      <guid>https://quiquadrado.netlify.app/categories/r/</guid>
       <description></description>
     </item>
     

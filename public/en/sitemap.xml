@@ -3,118 +3,118 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/en/categories/</loc>
+    <loc>https://quiquadrado.netlify.app/en/categories/</loc>
     <lastmod>2020-06-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="/categories/"
+                href="https://quiquadrado.netlify.app/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/en/categories/"
+                href="https://quiquadrado.netlify.app/en/categories/"
                 />
   </url>
   
   <url>
-    <loc>/en/categories/descriptive/</loc>
+    <loc>https://quiquadrado.netlify.app/en/categories/descriptive/</loc>
     <lastmod>2020-06-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/en/posts/descriptive-analysis-of-globo-soap-operas/</loc>
+    <loc>https://quiquadrado.netlify.app/en/posts/descriptive-analysis-of-globo-soap-operas/</loc>
     <lastmod>2020-06-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/en/posts/</loc>
+    <loc>https://quiquadrado.netlify.app/en/posts/</loc>
     <lastmod>2020-06-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="/posts/"
+                href="https://quiquadrado.netlify.app/posts/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/en/posts/"
+                href="https://quiquadrado.netlify.app/en/posts/"
                 />
   </url>
   
   <url>
-    <loc>/en/</loc>
+    <loc>https://quiquadrado.netlify.app/en/</loc>
     <lastmod>2020-06-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="/"
+                href="https://quiquadrado.netlify.app/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/en/"
+                href="https://quiquadrado.netlify.app/en/"
                 />
   </url>
   
   <url>
-    <loc>/en/categories/statistics/</loc>
+    <loc>https://quiquadrado.netlify.app/en/categories/statistics/</loc>
     <lastmod>2020-06-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/en/about/</loc>
+    <loc>https://quiquadrado.netlify.app/en/about/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="/about/"
+                href="https://quiquadrado.netlify.app/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/en/about/"
+                href="https://quiquadrado.netlify.app/en/about/"
                 />
   </url>
   
   <url>
-    <loc>/en/contact/</loc>
+    <loc>https://quiquadrado.netlify.app/en/contact/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="/contact/"
+                href="https://quiquadrado.netlify.app/contact/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/en/contact/"
+                href="https://quiquadrado.netlify.app/en/contact/"
                 />
   </url>
   
   <url>
-    <loc>/en/series/</loc>
+    <loc>https://quiquadrado.netlify.app/en/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="/series/"
+                href="https://quiquadrado.netlify.app/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/en/series/"
+                href="https://quiquadrado.netlify.app/en/series/"
                 />
   </url>
   
   <url>
-    <loc>/en/tags/</loc>
+    <loc>https://quiquadrado.netlify.app/en/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="/tags/"
+                href="https://quiquadrado.netlify.app/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/en/tags/"
+                href="https://quiquadrado.netlify.app/en/tags/"
                 />
   </url>
   
