@@ -3,7 +3,7 @@ slug: about
 title: Sobre mim
 ---
 
-Estatístico formado pela Universidade Federal de Mato Grosso **(UFMT)**.
+Estudante de estatística pela Universidade Federal de Mato Grosso **(UFMT)**.
 
 #### Experiência
 

@@ -6,28 +6,9 @@
     <description>Recent content in Categories on Qui-Quadrado?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
-    <lastBuildDate>Sat, 27 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://quiquadrado.netlify.app/en/categories/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>descriptive</title>
-      <link>https://quiquadrado.netlify.app/en/categories/descriptive/</link>
-      <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://quiquadrado.netlify.app/en/categories/descriptive/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>statistics</title>
-      <link>https://quiquadrado.netlify.app/en/categories/statistics/</link>
-      <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://quiquadrado.netlify.app/en/categories/statistics/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>

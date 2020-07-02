@@ -3,7 +3,7 @@ slug: about
 title: About Me
 ---
 
-Statistician graduated from the Federal University of Mato Grosso **(UFMT)**.
+Statistics student from the Federal University of Mato Grosso **(UFMT)**.
 
 #### Experience
 
