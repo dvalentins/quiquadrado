@@ -1,0 +1,165 @@
+---
+title: "Classificação de gêneros musicais"
+author: "Daniel Valentins de Lima"
+date: "08/07/2020"
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, warning = F, message = F}
+library(tidyverse)
+library(janitor)
+library(tidymodels)
+library(textrecipes)
+library(tidytext)
+
+theme_set(theme_minimal())
+```
+
+# Importando os bancos
+```{r, warning = F, message = F}
+letras_bossa_nova <- read_csv("./letras_mus_br_bossa-nova.csv") %>%
+  mutate(genero = "bossa_nova")
+
+letras_mpb <- read_csv("./letras_mus_br_mpb.csv") %>%
+  mutate(genero = "mpb")
+
+letras <- letras_bossa_nova %>%
+  bind_rows(letras_mpb) %>%
+  select(-titulo, -artista) %>%
+  mutate(genero = as_factor(genero))
+```
+
+```{r, warning = F, message = F, echo = F}
+rm(letras_bossa_nova); rm(letras_mpb)
+```
+
+# Modelagem
+
+## Bancos de treino e teste
+```{r}
+set.seed(0099)
+letras_split <- initial_split(letras)
+
+letras_training <- training(letras_split)
+letras_testing <- testing(letras_split)
+```
+
+## Processamento dos dados
+```{r}
+letras_tokens <- letras_training %>%
+  unnest_tokens(tokens, letras)
+
+letras_tokens
+```
+
+```{r}
+letras_tokens %>%
+  count(X1) %>%
+  ggplot(aes(n)) +
+  geom_histogram(binwidth = 10) +
+  labs(title = "Distribuição do número de palavras em cada música")
+```
+
+```{r}
+rec_spec <- recipe(genero ~ letras, data = letras_training) %>%
+  step_tokenize(letras) %>%
+  step_stopwords(letras, language = "pt") %>%
+  step_tokenfilter(letras, max_tokens = tune()) %>%
+  step_tf(letras, weight_scheme = "binary")
+```
+
+## Modelo SVM
+```{r}
+mod_spec <- svm_rbf(cost = tune(), rbf_sigma = tune()) %>%
+  set_engine("kernlab") %>%
+  set_mode("classification")
+```
+
+```{r}
+set.seed(0099)
+letras_folds <- vfold_cv(letras_training, v = 5)
+```
+
+```{r}
+letras_wf <- workflow() %>%
+  add_recipe(rec_spec) %>%
+  add_model(mod_spec)
+```
+
+```{r, warning = F, message = F, results = 'hide'}
+tune_res <- tune_grid(
+  letras_wf,
+  resamples = letras_folds,
+  grid = 25,
+  control = control_grid(verbose = T)
+)
+```
+
+## Métricas
+```{r}
+show_best(tune_res, "accuracy")
+```
+
+### Acurácia
+```{r}
+collect_metrics(tune_res) %>%
+  filter(.metric == "accuracy") %>%
+  ggplot(aes(cost, rbf_sigma, size = max_tokens, color = mean)) +
+  geom_point() +
+  scale_y_log10() +
+  scale_x_log10() +
+  scale_color_viridis_c()
+```
+
+### Curva ROC
+```{r}
+collect_metrics(tune_res) %>%
+  filter(.metric == "roc_auc") %>%
+  ggplot(aes(cost, rbf_sigma, size = max_tokens, color = mean)) +
+  geom_point() +
+  scale_y_log10() +
+  scale_x_log10() +
+  scale_color_viridis_c()
+```
+
+```{r}
+best_accuracy <- select_best(tune_res, "accuracy")
+
+final_wf <- finalize_workflow(
+  letras_wf,
+  best_accuracy
+)
+
+final_wf
+```
+
+## Finalizando o modelo
+```{r}
+final_res <- final_wf %>%
+  last_fit(letras_split)
+```
+
+```{r}
+final_res %>%
+  collect_metrics()
+```
+
+```{r}
+final_res %>%
+  unnest(.predictions)
+```
+
+### Matriz de confusão
+```{r}
+final_res %>%
+  unnest(.predictions) %>%
+  conf_mat(truth = genero, .pred_class) %>%
+  autoplot(type = "heatmap") +
+  labs(title = "Matriz de confusão: Classificação de gênero musical")
+```
